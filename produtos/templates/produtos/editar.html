@@ -1,0 +1,18 @@
+{% extends "main.html" %}{% load static %}
+{% block body %}
+{% if produto %}
+<div class="col-sm-6">
+    <form action="" method="post">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="nome" class="control-label">Nome do produto</label>
+            <input type="hidden" id="id" name="id" value="{{ produto.id }}">
+            <input type="text" class="form-control" id="nome" name="nome" value="{{ produto.nome }}" required>
+            <input type="text" class="form-control" id="modelo" name="modelo" value="{{ produto.modelo }}" required>
+            <input type="text" class="form-control" id="descricao" name="descricao" value="{{ produto.descricao }}" required>
+        </div>
+        <input type="submit" value="Atualizar" />
+    </form>
+</div>
+{% endif %}
+{% endblock %}
