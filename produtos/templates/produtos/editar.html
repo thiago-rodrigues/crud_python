@@ -1,18 +1,31 @@
-{% extends "main.html" %}{% load static %}
-{% block body %}
-{% if produto %}
-<div class="col-sm-6">
-    <form action="" method="post">
-        {% csrf_token %}
-        <div class="form-group">
-            <label for="nome" class="control-label">Nome do produto</label>
-            <input type="hidden" id="id" name="id" value="{{ produto.id }}">
-            <input type="text" class="form-control" id="nome" name="nome" value="{{ produto.nome }}" required>
-            <input type="text" class="form-control" id="modelo" name="modelo" value="{{ produto.modelo }}" required>
-            <input type="text" class="form-control" id="descricao" name="descricao" value="{{ produto.descricao }}" required>
-        </div>
-        <input type="submit" value="Atualizar" />
-    </form>
+{% extends "main.html" %}{% load static %} {% block body %} {% if produto %}
+<div class="panel panel-primary">
+    <div class="panel-heading">Cadastro Produto - (FORM)</div>
+    <div class="panel-body">
+        <form class="form-inline" action="" method="post">
+            {% csrf_token %}
+            <div class="form-group">
+                <label class="sr-only" for="id">Id</label>
+                <input type="hidden" class="form-control" id="id" name="id" value="{{ produto.id }}" required>
+            </div>
+            <div class="form-group">
+                <label class="sr-only" for="nome">Nome</label>
+                <input type="text" class="form-control" id="nome" name="nome" value="{{ produto.nome }}" required>
+            </div>
+            <div class="form-group">
+                <label class="sr-only" for="modelo">Modelo</label>
+                <input type="text" class="form-control" id="modelo" name="modelo" value="{{ produto.modelo }}" required>
+            </div>
+            <div class="form-group">
+                <label class="sr-only" for="descricao">Descrição</label>
+                <input type="text" class="form-control" id="descricao" name="descricao" value="{{ produto.descricao }}" required>
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary">Salvar</button>
+            </div>
+
+        </form>
+    </div>
+    <div class="panel-footer"></div>
 </div>
-{% endif %}
-{% endblock %}
+{% endif %} {% endblock %}
