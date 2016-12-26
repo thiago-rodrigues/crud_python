@@ -1,0 +1,28 @@
+{% extends "main.html" %} {% load static %} {% block body %}
+<h2>Lista de produtos</h2>
+{% if lista_produtos %}
+<div class="container-fluid">
+  <div class="row">
+      <table class="table table-bordered">
+          <tr>
+              <td><h4>Nome do produto</h4></td>
+              <td><h4>Modelo</h4></td>
+              <td><h4>Descrição</h4></td>
+              <td width="1%" colspan="2"><h4>Ação</h4></td>
+          </tr>
+          {% for produto in lista_produtos %}
+          <tr>
+              <td>{{ produto.nome }}</td>
+              <td>{{ produto.modelo }}</td>
+              <td>{{ produto.descricao }}</td>
+              <td><a href="/produtos/editar/{{ produto.id }}">Editar</a></td>
+              <td><a href="/produtos/excluir/{{ produto.id }}">Excluir</a></td>
+          </tr>
+
+          {% endfor %}
+      </table>
+  </div>
+</div>
+{% else %}
+<p>Não há produtos cadastrados.</p>
+{% endif %} {% endblock %}
