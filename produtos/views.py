@@ -25,3 +25,11 @@ class CadastroView(AuthView):
         messages.add_message(request, messages.INFO,
                              'Produto cadastrado com sucesso!')
         return HttpResponseRedirect('/produtos/cadastro/')
+
+
+class ListaView(AuthView):
+
+    def get(self, request):
+        lista_produtos = Produtos.objects.order_by('nome')
+        return render(request, 'produtos/listar.html',
+                      {'lista_produtos': lista_produtos})
